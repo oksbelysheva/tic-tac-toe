@@ -23,23 +23,26 @@ class TicTacToe {
     }
 
     isFinished() {
-
+        return !!this.getWinner() || this.noMoreTurns() || false;
     }
 
     getWinner() {
-        if (this.field[0][0] == this.field[0][1] == this.field[0][2] ||
-            this.field[0][0] == this.field[1][1] == this.field[2][2] ||
-            this.field[0][0] == this.field[1][0] == this.field[2][0])
+        if (((this.field[0][0] == this.field[0][1] && this.field[0][1] == this.field[0][2]) ||
+            (this.field[0][0] == this.field[1][1] && this.field[1][1] == this.field[2][2]) ||
+            (this.field[0][0] == this.field[1][0] && this.field[1][0] == this.field[2][0]))
+            && this.field[0][0])
             return this.field[0][0];
-        if (this.field[1][0] == this.field[1][1] == this.field[1][2] ||
-            this.field[0][2] == this.field[1][1] == this.field[2][0] ||
-            this.field[0][1] == this.field[1][1] == this.field[2][1])
+        if (((this.field[1][0] == this.field[1][1] && this.field[1][1] == this.field[1][2]) ||
+            (this.field[0][2] == this.field[1][1] && this.field[1][1] == this.field[2][0]) ||
+            (this.field[0][1] == this.field[1][1] && this.field[1][1] == this.field[2][1]))
+            && this.field[1][1])
             return this.field[1][1];
-        if (
-            this.field[2][0] == this.field[2][1] == this.field[2][2] ||
-            this.field[0][1] == this.field[1][1] == this.field[2][1])
+        if (((this.field[2][0] == this.field[2][1] && this.field[2][1] == this.field[2][2]) ||
+            (this.field[0][1] == this.field[1][1] && this.field[1][1] == this.field[2][1])) 
+            && this.field[2][1])
             return this.field[2][1];
-        if (this.field[0][2] == this.field[1][2] == this.field[2][2])
+        if ((this.field[0][2] == this.field[1][2] && this.field[1][2] == this.field[2][2])
+            && this.field[0][2])
             return this.field[0][2];
         return null;
     }
